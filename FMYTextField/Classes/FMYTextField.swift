@@ -1,9 +1,8 @@
 //
 //  FMYTextField.swift
-//  EntregasInmobilia
+//  FMYTextField
 //
-//  Created by Freddy Poot on 08/03/19.
-//  Copyright © 2019 DaCodes_iOS. All rights reserved.
+//  Created by Freddy Rodrigo Poot May on 3/9/19.
 //
 
 import UIKit
@@ -25,5 +24,5 @@ public class FMYTextField: UITextField {
     override init(frame: CGRect) {
         super.init(frame: frame)
     }
-
+    
 }

@@ -1,16 +1,11 @@
 //
 //  FMYTextField+Additions.swift
-//  EntregasInmobilia
+//  FMYTextField
 //
-//  Created by Freddy Rodrigo Poot May on 3/8/19.
-//  Copyright © 2019 DaCodes_iOS. All rights reserved.
+//  Created by Freddy Rodrigo Poot May on 3/9/19.
 //
 
 import Foundation
-
-//protocol ValidatorConvertible {
-//    func validated(_ value: String) throws -> String
-//}
 
 public enum ValidatorType {
     case email

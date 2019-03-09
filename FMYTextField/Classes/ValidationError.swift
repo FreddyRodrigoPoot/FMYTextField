@@ -1,9 +1,8 @@
 //
 //  ValidationError.swift
-//  EntregasInmobilia
+//  FMYTextField
 //
-//  Created by Freddy Rodrigo Poot May on 3/8/19.
-//  Copyright © 2019 DaCodes_iOS. All rights reserved.
+//  Created by Freddy Rodrigo Poot May on 3/9/19.
 //
 
 import Foundation
@@ -13,6 +12,3 @@ public class ValidationError: Error {
     
     init(_ message: String) { self.message = message }
 }
-
-
-
