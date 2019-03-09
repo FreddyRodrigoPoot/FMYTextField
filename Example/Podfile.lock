@@ -1,0 +1,16 @@
+PODS:
+  - FMYTextField (0.1.0)
+
+DEPENDENCIES:
+  - FMYTextField (from `../`)
+
+EXTERNAL SOURCES:
+  FMYTextField:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  FMYTextField: 84f68e39c7e8b27fb1bcbf6db07ea486ac665800
+
+PODFILE CHECKSUM: 19c51a7dba247ec7a2c42fedee67d18a2017247c
+
+COCOAPODS: 1.6.0.beta.2

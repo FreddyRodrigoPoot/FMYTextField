@@ -1,0 +1,6 @@
+framework module Pods_FMYTextField_Tests {
+  umbrella header "Pods-FMYTextField_Tests-umbrella.h"
+
+  export *
+  module * { export * }
+}

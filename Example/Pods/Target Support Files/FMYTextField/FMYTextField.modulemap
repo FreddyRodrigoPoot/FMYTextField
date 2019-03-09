@@ -1,0 +1,6 @@
+framework module FMYTextField {
+  umbrella header "FMYTextField-umbrella.h"
+
+  export *
+  module * { export * }
+}
