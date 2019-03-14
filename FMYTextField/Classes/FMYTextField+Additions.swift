@@ -11,6 +11,7 @@ public enum ValidatorType {
     case email
     case password
     case required
+    case telephone
     case none
 }
 
@@ -24,6 +25,8 @@ extension FMYTextField {
             return try validatePassword()
         case .required:
             return try requiredValidation()
+        case .telephone:
+            return try validatePhone()
         case .none:
             return
         }
@@ -36,26 +39,47 @@ extension FMYTextField {
     }
     
     private func validateEmail() throws {
-        if text == nil || text!.isEmpty {
-            throw ValidationError("El correo electrónico es requerido")
+        if currentValueIsEmpty() { throw ValidationError("El correo electrónico es requerido") }
+        if regularExpresion == nil {
+            regularExpresion = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
         }
-        let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
-        let emailTest = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
+        if validationErrorMessage == nil {
+            validationErrorMessage = "El correo electrónico no tiene un formato valido"
+        }
+        let emailTest = NSPredicate(format:"SELF MATCHES %@", self.regularExpresion!)
         let result = emailTest.evaluate(with: self.text)
         if !result {
-            throw ValidationError(throwMessage)
+            throw ValidationError(validationErrorMessage!)
         }
     }
     
     private func validatePassword() throws {
-        guard text != nil else { throw ValidationError("La contraseña es requerido") }
-        guard text!.count >= self.minimunCharactersForPassword else { throw ValidationError("La contraseña debe tener al menos \(minimunCharactersForPassword) caracteres") }
+        if currentValueIsEmpty() { throw ValidationError("La contraseña es requerida") }
         do {
-            if try NSRegularExpression(pattern: "^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d]{6,}$",  options: .caseInsensitive).firstMatch(in: text!, options: [], range: NSRange(location: 0, length: text!.count)) == nil {
-                throw ValidationError("La contraseña debe tener más de 6 caracteres, con al menos un carácter y un carácter numérico")
+            if regularExpresion == nil {
+                regularExpresion = "^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d]{6,}$"
+            }
+            if validationErrorMessage == nil {
+                validationErrorMessage = "La contraseña debe tener más de 6 caracteres, con al menos un carácter y un carácter numérico"
+            }
+            if try NSRegularExpression(pattern: regularExpresion!,  options: .caseInsensitive).firstMatch(in: text!, options: [], range: NSRange(location: 0, length: text!.count)) == nil {
+                throw ValidationError(validationErrorMessage!)
             }
         } catch {
-            throw ValidationError("La contraseña debe tener más de 6 caracteres, con al menos un carácter y un carácter numérico")
+            throw ValidationError(validationErrorMessage!)
+        }
+    }
+    
+    private func validatePhone() throws {
+        if currentValueIsEmpty() { throw ValidationError("El número telefónico es requerido")}
+        if regularExpresion == nil {
+            regularExpresion = "^[0-9]{10}$"
+        }
+        if validationErrorMessage == nil {
+            validationErrorMessage = "El número telefónico debe de ser de 10 digitos numéricos"
+        }
+        guard text!.range(of: regularExpresion!, options: .regularExpression) != nil else {
+            throw ValidationError(validationErrorMessage!)
         }
     }
     
@@ -67,5 +91,9 @@ extension FMYTextField {
             message = placeholder != nil ? "El campo \(placeholder!) no es valido" : defaultPlaceHolder
         }
         return message!
+    }
+    
+    func currentValueIsEmpty() -> Bool {
+        return text == nil || text!.isEmpty
     }
 }

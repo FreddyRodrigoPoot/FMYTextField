@@ -21,18 +21,59 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="KUX-bI-rEi" customClass="FMYTextField" customModule="FMYTextField">
-                                <rect key="frame" x="36" y="154" width="303" height="30"/>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="2cd-aG-f5u">
+                                <rect key="frame" x="36" y="40" width="303" height="68"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Validar Email" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BhM-dd-QLH">
+                                        <rect key="frame" x="0.0" y="0.0" width="303" height="30"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="16"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="KUX-bI-rEi" customClass="FMYTextField" customModule="FMYTextField">
+                                        <rect key="frame" x="0.0" y="38" width="303" height="30"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                </subviews>
+                            </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="6Yw-BC-nde">
+                                <rect key="frame" x="50" y="128" width="275" height="79"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Myg-qZ-WBW">
+                                        <rect key="frame" x="0.0" y="0.0" width="275" height="32"/>
+                                        <color key="backgroundColor" red="0.3124283553578362" green="0.2261450069075972" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="16"/>
+                                        <state key="normal" title="Validar">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="validateTextFieldAction" destination="vXZ-lx-hvc" eventType="touchUpInside" id="ZgF-Oa-HOV"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XCo-2G-WOx">
+                                        <rect key="frame" x="0.0" y="47" width="275" height="32"/>
+                                        <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="16"/>
+                                        <state key="normal" title="Cambiar validacion">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="changeTypeValidation" destination="vXZ-lx-hvc" eventType="touchUpInside" id="sRM-DZ-gKW"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.67086080867613218" green="0.79495223446683938" blue="0.23634082247735602" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="KUX-bI-rEi" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="20" id="XDu-KK-eUn"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="KUX-bI-rEi" secondAttribute="trailing" constant="20" id="ljD-nL-lH2"/>
-                            <constraint firstItem="KUX-bI-rEi" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="134" id="zdO-3Z-PTU"/>
+                            <constraint firstItem="6Yw-BC-nde" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" constant="50" id="BRJ-MT-LWU"/>
+                            <constraint firstItem="2cd-aG-f5u" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="20" id="Hqo-1X-kLF"/>
+                            <constraint firstItem="6Yw-BC-nde" firstAttribute="top" secondItem="2cd-aG-f5u" secondAttribute="bottom" constant="20" id="brg-GN-xZf"/>
+                            <constraint firstAttribute="trailing" secondItem="6Yw-BC-nde" secondAttribute="trailing" constant="50" id="hYM-Wo-uWm"/>
+                            <constraint firstItem="2cd-aG-f5u" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="20" id="kFl-s3-ydj"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="2cd-aG-f5u" secondAttribute="trailing" constant="20" id="qsq-wJ-00X"/>
                         </constraints>
                     </view>
                     <connections>
